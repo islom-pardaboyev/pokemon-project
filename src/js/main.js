@@ -1,6 +1,6 @@
 "use strict";
 
-// Color for types
+// color for types
 const typeColor = {
     bug: "#a8ba1c",
     dragon: "#ffeaa7",
@@ -20,12 +20,12 @@ const typeColor = {
     water: "#628ff0",
 };
 
-// Empty arrays
+// empty arrays
 let typesArray = [];
 let likedArray = [];
 let savedArray = [];
 
-// Initial variables
+// initial variables
 const pokemonContainer = document.querySelector("#pokemonContainer");
 const pokemonInfo = document.querySelector("#pokemonInfo");
 const pokemonType = document.querySelector("#pokemonType");
@@ -35,10 +35,9 @@ const savedLength = document.querySelector("#savedLenght");
 const showSavedPoks = document.querySelector("#showSavedPoks");
 const showLikedPoks = document.querySelector("#showLikedPoks");
 
-// Render function (main function)
+// render function (main function)
 function renderPokemons(arr, list) {
     list.innerHTML = "";
-
     arr.forEach(pokemon => {
         const div = document.createElement("div");
         div.className = "bg-main w-[200px] group pb-3 text-center rounded-full";
@@ -78,27 +77,29 @@ function renderPokemons(arr, list) {
     });
 }
 
-// Append types function
+// append types function
 function appendTypes(types, container) {
     types.forEach(type => {
         const span = document.createElement("span");
         span.textContent = type;
-        span.style.backgroundColor = typeColor[type.toLowerCase()] || '#000';
-        span.className = "text-white uppercase text-xs rounded-md px-3 py-2 mx-1";
-        if(span.textContent == "Dragon"){
-            span.className = "text-black uppercase text-xs rounded-md px-3 py-2 mx-1"
+        span.style.backgroundColor = typeColor[type.toLowerCase()];
+        span.className = "text-white uppercase text-xs font-bold rounded-md px-3 py-2 mx-1";
+        if (span.textContent == "Dragon") {
+            span.className = "text-black uppercase text-xs font-bold rounded-md px-3 py-2 mx-1"
         }
         container.appendChild(span);
     });
 }
 
-// About select pokemon function
+// about select pokemon function
 function displayPokemonInfo(pokemon) {
+    let {id} = pokemon
     let firstImg;
     let secondImg;
     let thirdImg;
 
-    console.log(firstImg);
+    console.log(id);
+
 
     pokemonInfo.innerHTML = `
         <div class="flex items-center justify-between">
@@ -137,7 +138,7 @@ function displayPokemonInfo(pokemon) {
     appendTypes(pokemon.weaknesses, pokemonInfo.querySelector("#pokInfoWK"));
 }
 
-// Start filter initial function
+// start filter initial function
 function startFilter() {
     pokemonType.addEventListener('change', filterPokemons);
     pokemonName.addEventListener("input", filterPokemons);
@@ -157,7 +158,7 @@ function startFilter() {
     });
 }
 
-// Filter pokemon
+// filter pokemon
 function filterPokemons() {
     const typeValue = pokemonType.value.toLowerCase();
     const nameValue = pokemonName.value.toLowerCase().trim();
@@ -170,7 +171,7 @@ function filterPokemons() {
     renderPokemons(filteredPokemons, pokemonContainer);
 }
 
-// Update arrays length show function
+// update arrays length show function
 function updateArrays() {
     likedArray = pokemons.filter(pok => pok.isLike);
     savedArray = pokemons.filter(pok => pok.isSaved);
@@ -178,7 +179,7 @@ function updateArrays() {
     savedLength.textContent = savedArray.length;
 }
 
-// Set types function
+// set types function
 function setTypes(arr, type) {
     arr.forEach(pokemon => {
         pokemon.type.forEach(t => {
@@ -189,7 +190,7 @@ function setTypes(arr, type) {
     });
 }
 
-// Type option filter select function
+// type option filter select function
 function populateTypeDropdown(list, array) {
     array.forEach(type => {
         const option = document.createElement('option');
@@ -199,7 +200,7 @@ function populateTypeDropdown(list, array) {
     });
 }
 
-// Calling functions
+// calling functions
 startFilter();
 setTypes(pokemons, typesArray);
 populateTypeDropdown(pokemonType, typesArray);
