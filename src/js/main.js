@@ -1,5 +1,6 @@
 "use strict";
 
+// color for type
 const typeColor = {
     bug: "#a8ba1c",
     dragon: "#ffeaa7",
@@ -19,10 +20,12 @@ const typeColor = {
     water: "#628ff0",
 };
 
+// emptys arrays
 let typesArray = [];
 let likedArray = [];
 let savedArray = [];
 
+// intial variables
 const pokemonContainer = document.querySelector("#pokemonContainer");
 const pokemonInfo = document.querySelector("#pokemonInfo");
 const pokemonType = document.querySelector("#pokemonType");
@@ -32,6 +35,7 @@ const savedLenght = document.querySelector("#savedLenght");
 const showSavedPoks = document.querySelector("#showSavedPoks");
 const showLikedPoks = document.querySelector("#showLikedPoks");
 
+// render funtion (main funtion)
 function renderPokemons(arr, list) {
     list.innerHTML = "";
 
@@ -74,6 +78,7 @@ function renderPokemons(arr, list) {
     });
 }
 
+// append tpyes funtion
 function appendTypes(types, container) {
     types.forEach(type => {
         const span = document.createElement("span");
@@ -87,6 +92,7 @@ function appendTypes(types, container) {
     });
 }
 
+// about select pokemon funtion
 function displayPokemonInfo(pokemon) {
     pokemonInfo.innerHTML = `
         <div class="flex items-center justify-between">
@@ -123,6 +129,7 @@ function displayPokemonInfo(pokemon) {
     appendTypes(pokemon.weaknesses, pokemonInfo.querySelector("#pokInfoWK"))
 }
 
+// start filter intial funtion
 function startFilter() {
     pokemonType.addEventListener('change', filterPokemons);
     pokemonName.addEventListener("input", filterPokemons);
@@ -130,6 +137,7 @@ function startFilter() {
     showSavedPoks.addEventListener('click', () => renderPokemons(savedArray, pokemonContainer));
 }
 
+// filter pokemon
 function filterPokemons() {
     const typeValue = pokemonType.value.toLowerCase();
     const nameValue = pokemonName.value.toLowerCase().trim();
@@ -142,6 +150,7 @@ function filterPokemons() {
     renderPokemons(filteredPokemons, pokemonContainer);
 }
 
+// update arrays length show function
 function updateArrays() {
     likedArray = pokemons.filter(pok => pok.isLike);
     savedArray = pokemons.filter(pok => pok.isSaved);
@@ -149,6 +158,7 @@ function updateArrays() {
     savedLenght.textContent = savedArray.length;
 }
 
+// set types funtion
 function setTypes(arr, type) {
     arr.forEach(pokemon => {
         pokemon.type.forEach(t => {
@@ -159,6 +169,7 @@ function setTypes(arr, type) {
     });
 }
 
+// type option filter select funtion
 function populateTypeDropdown(list, array) {
     array.forEach(type => {
         const option = document.createElement('option');
