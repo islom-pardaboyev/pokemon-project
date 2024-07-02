@@ -10,14 +10,15 @@
     <link rel="stylesheet" href="css/output.css">
 </head>
 
-<body class="w-screen h-screen bg-fixed" style="background-image: url('./image/bg-image.jpg');">
-
+<body
+    style="background: url('./image/bg-image.png'); background-position: center; background-attachment: fixed; background-repeat: no-repeat; background-size: cover;">
     <main>
         <div class="container mx-auto">
             <div class="flex items-center gap-3 mt-4 mb-16">
                 <div style="box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;"
                     class="flex gap-2 w-full bg-white rounded-3xl items-center px-4 py-3">
-                    <input id="pokemonName" type="text" placeholder="Search..." class="w-full outline-none font-medium px-2">
+                    <input id="pokemonName" type="text" placeholder="Search..."
+                        class="w-full outline-none font-medium px-2">
                     <i
                         class="fa-solid fa-magnifying-glass text-white p-2 flex items-center justify-center rounded-3xl bg-orange w-[50px]"></i>
                 </div>
@@ -25,11 +26,13 @@
                     <option value="" selected>Filter By Type</option>
                     <option value="all">All Types</option>
                 </select>
-                <div id="showLikedPoks" class="flex items-center border bg-white cursor-pointer rounded-full p-2 border-black gap-1">
+                <div id="showLikedPoks"
+                    class="flex items-center border bg-white cursor-pointer rounded-full p-2 border-black gap-1">
                     <i class="fa-solid fa-heart"></i>
                     <span id="likedLenght">0</span>
                 </div>
-                <div id="showSavedPoks" class="flex items-center border bg-white cursor-pointer rounded-full p-2 border-black gap-1">
+                <div id="showSavedPoks"
+                    class="flex items-center border bg-white cursor-pointer rounded-full p-2 border-black gap-1">
                     <i class="fa-solid fa-bookmark"></i>
                     <span id="savedLenght">0</span>
                 </div>
@@ -39,17 +42,19 @@
                     class="col-span-7 mx-auto flex items-center gap-x-8 gap-y-10 flex-wrap justify-start">
 
                 </div>
-                <div id="pokemonInfo" class="col-span-5 sticky top-16 h-[700px] bg-white rounded-md p-5"
+                <div id="pokemonInfo" class="col-span-5 sticky top-16 w-full h-[700px] bg-white rounded-md p-5"
                     style="box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;">
 
-                    <h1 class="font-medium text-gray-500 h-full flex items-center justify-center">👉Select 1 pokemon on the
+                    <h1 class="font-medium text-gray-500 h-full flex items-center justify-center">👉Select 1 pokemon on
+                        the
                         screens👈</h1>
                 </div>
-                
+
             </div>
         </div>
     </main>
 
+    
     <!-- script -->
     <script src="js/pokemons.js"></script>
     <script src="js/main.js"></script>
