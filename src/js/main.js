@@ -39,16 +39,17 @@ const showLikedPoks = document.querySelector("#showLikedPoks");
 function renderPokemons(arr, list) {
     list.innerHTML = "";
     arr.forEach(pokemon => {
+        const {img, id, name, isLike, isSaved} = pokemon
         const div = document.createElement("div");
         div.className = "bg-main w-[200px] group pb-3 text-center rounded-full";
         div.innerHTML = `
-            <img src="${pokemon.img}" width="100px" class="cursor-pointer -mt-10 mx-auto group-hover:scale-125 transition-all duration-200" alt="${pokemon.name}">
-            <p class="mt-1 text-main-100 font-bold text-lg">#${pokemon.id}</p>
-            <h1 class="font-bold text-xl mb-2">${pokemon.name}</h1>
+            <img src="${img}" width="100px" class="cursor-pointer -mt-10 mx-auto group-hover:scale-125 transition-all duration-200" alt="${name}">
+            <p class="mt-1 text-main-100 font-bold text-lg">#${id}</p>
+            <h1 class="font-bold text-xl mb-2">${name}</h1>
             <p class="flex items-center justify-center" id="types"></p>
             <div class="flex items-center text-lg justify-center gap-2 my-2">
-                <i class="likedBtn fa-solid cursor-pointer ${pokemon.isLike ? "text-red-600" : ""} fa-heart"></i>
-                <i class="savedBtn fa-solid cursor-pointer ${pokemon.isSaved ? "text-cyan-400" : ""} fa-bookmark"></i>
+                <i class="likedBtn fa-solid cursor-pointer ${isLike ? "text-red-600" : ""} fa-heart"></i>
+                <i class="savedBtn fa-solid cursor-pointer ${isSaved ? "text-cyan-400" : ""} fa-bookmark"></i>
             </div>
         `;
 
@@ -93,7 +94,7 @@ function appendTypes(types, container) {
 
 // about select pokemon function
 function displayPokemonInfo(pokemon) {
-    let {id} = pokemon
+    let {id, name, type, weaknesses, weight,  height} = pokemon
     let firstImg;
     let secondImg;
     let thirdImg;
@@ -103,13 +104,13 @@ function displayPokemonInfo(pokemon) {
 
     pokemonInfo.innerHTML = `
         <div class="flex items-center justify-between">
-            <p class="p-1 bg-gray-300/80 rounded-md font-medium border border-gray-400">${pokemon.height}</p>
-            <p class="p-1 bg-gray-300/80 rounded-md font-medium border border-gray-400">${pokemon.weight}</p>
+            <p class="p-1 bg-gray-300/80 rounded-md font-medium border border-gray-400">${height}</p>
+            <p class="p-1 bg-gray-300/80 rounded-md font-medium border border-gray-400">${weight}</p>
         </div>
-        <p class="text-center font-medium text-gray-500 my-10">#${pokemon.id}</p>
-        <h1 class="text-center font-bold text-xl">${pokemon.name}</h1>
+        <p class="text-center font-medium text-gray-500 my-10">#${id}</p>
+        <h1 class="text-center font-bold text-xl">${name}</h1>
         <div class="mx-auto mt-4 flex items-center justify-between">
-            <img class="absolute left-[50%] -top-14 translate-x-[-50%]" width="130" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${pokemon.id}.gif">
+            <img class="absolute left-[50%] -top-14 translate-x-[-50%]" width="130" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${id}.gif">
             <div class="flex justify-between w-full gap-3">
                 <div class="flex flex-col items-center gap-2">
                     <h1 class="font-bold">Types</h1>
@@ -123,14 +124,14 @@ function displayPokemonInfo(pokemon) {
             </div>
         </div>
         <h1 class="text-center mt-16 italic text-gray-500 flex items-center font-semibold">
-            Its name ${pokemon.name}, its types: ${pokemon.type.join(", ").toLowerCase()} and its weaknesses: ${pokemon.weaknesses.join(", ").toLowerCase()}
+            Its name ${pokemon.name}, its types: ${type.join(", ").toLowerCase()} and its weaknesses: ${weaknesses.join(", ").toLowerCase()}
         </h1>
         <div class="absolute bottom-3 w-full flex items-center left-0 justify-between">
-            <img class="cursor-pointer" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${firstImg}.png">
+            <img class="cursor-pointer" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png">
             <i class="fa-solid fa-chevron-right"></i>
-            <img class="cursor-pointer" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${secondImg}.png">
+            <img class="cursor-pointer" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id + 1}.png">
             <i class="fa-solid fa-chevron-right"></i>
-            <img class="cursor-pointer" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${thirdImg}.png">
+            <img class="cursor-pointer" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id + 2}.png">
         </div>
     `;
 
