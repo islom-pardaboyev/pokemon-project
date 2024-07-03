@@ -145,14 +145,14 @@ function startFilter() {
     pokemonName.addEventListener("input", filterPokemons);
     showLikedPoks.addEventListener('click', () => {
         if (likedArray.length == 0) {
-            pokemonContainer.innerHTML = `<h1 class="font-bold text-3xl text-white">Not selected yet LIKED Pokemons</h1>`
+            pokemonContainer.innerHTML = `<h1 class="font-bold text-3xl text-black">Not selected yet LIKED Pokemons</h1>`
         } else {
             renderPokemons(likedArray, pokemonContainer)
         }
     });
     showSavedPoks.addEventListener('click', () => {
         if (savedArray.length == 0) {
-            pokemonContainer.innerHTML = `<h1 class="font-bold text-3xl text-white">Not selected yet SAVED Pokemons</h1>`
+            pokemonContainer.innerHTML = `<h1 class="font-bold text-3xl text-black">Not selected yet SAVED Pokemons</h1>`
         } else {
             renderPokemons(savedArray, pokemonContainer);
         }
