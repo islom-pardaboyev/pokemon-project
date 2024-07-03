@@ -39,7 +39,7 @@ const showLikedPoks = document.querySelector("#showLikedPoks");
 function renderPokemons(arr, list) {
     list.innerHTML = "";
     arr.forEach(pokemon => {
-        const {img, id, name, isLike, isSaved} = pokemon
+        const {img, nmae, id, name, isLike, isSaved} = pokemon
         const div = document.createElement("div");
         div.className = "bg-main w-[200px] group pb-3 text-center rounded-full";
         div.innerHTML = `
